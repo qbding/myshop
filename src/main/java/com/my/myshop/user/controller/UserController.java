@@ -48,9 +48,9 @@ public class UserController {
 
     @RequestMapping(value = "goLogin")
     public String goLogin(ModelMap map, HttpServletRequest request) {
-        String a = (String) request.getSession().getAttribute("userToken");
+      /*  String a = (String) request.getSession().getAttribute("userToken");
         System.out.println("token---------------"+a);
-        request.getSession().setAttribute("userToken","1111111111111");
+        request.getSession().setAttribute("userToken","1111111111111");*/
         return "login";
     }
 
@@ -60,6 +60,7 @@ public class UserController {
     @ResponseBody
     @Operation("登录")
     public ApiResult login( @RequestBody User user, BindingResult bindingResult, HttpServletRequest request) {
+        request.getSession().setAttribute("id","123445");
         log.info("-----------"+JSON.toJSONString(userService));
         if (bindingResult.hasErrors()) {
             String message = bindingResult.getFieldError().getDefaultMessage();
@@ -78,7 +79,7 @@ public class UserController {
         System.out.println(subject.hasRole("coder"));
 
 //        User result = userService.login(user);
-return resp;
+        return resp;
 //        request.getSession().setAttribute(Constants.REQUEST_TOKEN_KEY,result);
     }
     @RequestMapping(value = "test")

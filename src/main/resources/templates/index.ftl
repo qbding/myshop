@@ -45,6 +45,13 @@
 
 <body class="no-skin">
 
+<h1>
+    <#if Session["aa"]?exists>
+
+        ${Session["aa"]}
+
+    </#if>
+</h1>
     <#--头部-->
     <#include "./head.ftl">
     <#--头部-->
